@@ -3,7 +3,7 @@ const canvas = document.getElementById('gamecanvas');
 const draw = canvas.getContext("2d");
 
 //----関数内で使う変数
-
+let draw_background_toggle = true;
 
 //----ループ処理
 function init(){
