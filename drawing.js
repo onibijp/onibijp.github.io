@@ -3,8 +3,8 @@ const canvas = document.getElementById('gamecanvas');
 const ctx = canvas.getContext("2d");
 const basewidth = 1920;
 const baseheight = 1080;
-canvas.style.width = `${Math.trunc(window.innerWidth * 0.9)}px`; 
-canvas.style.height = `${Math.trunc(window.innerWidth * 0.9 / 16 * 9)}px`;
+canvas.style.width = `${Math.trunc(window.innerWidth * 0.5)}px`; 
+canvas.style.height = `${Math.trunc(window.innerWidth * 0.5 / 16 * 9)}px`;
 
 //----描画処理用関数配列
 const animation = [];
@@ -71,18 +71,36 @@ function select_botton_effect(frame)
 
 function select_botton(frame)
 {
-
+  let width = 192;
+  let height = 700;
+  draw_square(width,300,2*width,height,"green");
+  draw_square(4*width,300,2*width,height,"purple");
+  draw_square(7*width,300,2*width,height,"black");
 }
 
 function select(frame)
 {
-
+  draw_square(725,30,490,150,"black");
+  draw_text("SELECT",730,150,"white",undefined,120,"left");
 }
 
 function select_background(frame)
 {
   
+  draw_square(0,0,basewidth,baseheight,`rgb(${(((frame % 256) - 10) + (frame % 256))}, 50, ${(frame * frame) % 256}`);
+  ctx.font = "bold "+100+"px serif";
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+  ctx.rotate((25 * Math.PI) / 180);
+  
+  
+  for(let i = 0; i < 20; i++)
+  {
+    ctx.fillText("select select select select select select select select select select select select select select select select select select select select select select select select select select select select ", frame % 1920, (i * 100) - 800);
+  }
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
+
 //----描画用関数群
 export function clear()
 {

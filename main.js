@@ -48,12 +48,12 @@ class Animation_hinagata{
     this.toggle = false;
   }
 }
-const animation = new Array();
+const animation = new Array(animation_functions_length);
 function animation_setup()
 {
   let i;
 
-  for(i = 0; i < 256; i++)
+  for(i = 0; i < animation_functions_length; i++)
   {
     animation[i] = new Animation_hinagata(i,0);
   }
@@ -87,7 +87,7 @@ function init(){
       }
     }
     
-    case 1:
+    case 1://難易度選択
     {
       animation[0].switch_on();
       animation[1].switch_on();
@@ -112,7 +112,7 @@ function animation_draw()
 {
   let i;
 
-  for(i = animation_functions_length;i >= 0; i--)
+  for(i = animation_functions_length - 1;i >= 0; i--)
   {
     if(animation[i].toggle === true)
     {
